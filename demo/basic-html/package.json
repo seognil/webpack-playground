@@ -1,0 +1,11 @@
+{
+  "scripts": {
+    "build": "webpack",
+    "test": "open dist/index.html"
+  },
+  "devDependencies": {
+    "html-webpack-plugin": "^4.0.4",
+    "webpack": "^4.42.1",
+    "webpack-cli": "^3.3.11"
+  }
+}
