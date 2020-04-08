@@ -1,13 +1,16 @@
 module.exports = (config) => {
   const cssRule = config.module.rule('css').test(/\.(sass|scss|less|css)$/);
 
-  const USE_EXTRACT = true;
-
   // * ---------------- load style
 
-  USE_EXTRACT
-    ? cssRule.use('css-extract-loader').loader(require('mini-css-extract-plugin').loader)
-    : cssRule.use('style').loader('style-loader');
+  const USE_EXTRACT = true;
+
+  if (USE_EXTRACT) {
+    cssRule.use('css-extract-loader').loader(require('mini-css-extract-plugin').loader);
+    config.plugin('mini-css-extract').use('mini-css-extract-plugin');
+  } else {
+    cssRule.use('style').loader('style-loader');
+  }
 
   // * ---------------- css
 
@@ -27,6 +30,4 @@ module.exports = (config) => {
     .use('sass')
     .loader('sass-loader')
     .options({ implementation: require('dart-sass') });
-
-  USE_EXTRACT && config.plugin('mini-css-extract').use('mini-css-extract-plugin');
 };
