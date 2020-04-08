@@ -1,5 +1,5 @@
-module.exports = (config) => {
-  const cssRule = config.module.rule('css').test(/\.(sass|scss|less|css)$/);
+const loadStyleAdvanced = (config, name, test, loader, options = {}) => {
+  const cssRule = config.module.rule(name).test(test);
 
   // * ---------------- load style
 
@@ -14,7 +14,7 @@ module.exports = (config) => {
 
   // * ---------------- css
 
-  cssRule.use('css').loader('css-loader').options({ importLoaders: 2 });
+  cssRule.use('css').loader('css-loader');
 
   // * ---------------- postcss
 
@@ -23,11 +23,17 @@ module.exports = (config) => {
     .loader('postcss-loader')
     .options({ ident: 'postcss', plugins: [require('autoprefixer')()] });
 
-  // * ---------------- sass
-  // * would parse scss and less all in one
+  // * ---------------- anvanced processor
 
-  cssRule
-    .use('sass')
-    .loader('sass-loader')
-    .options({ implementation: require('dart-sass') });
+  if (loader) {
+    cssRule.use(loader).loader(loader).options(options);
+  }
+};
+
+module.exports = (config, resolver) => {
+  loadStyleAdvanced(config, 'css', /\.css$/);
+  loadStyleAdvanced(config, 'less', /\.less$/, 'less-loader');
+  loadStyleAdvanced(config, 'sass', /\.(sass|scss)$/, 'sass-loader', {
+    implementation: require('dart-sass'),
+  });
 };

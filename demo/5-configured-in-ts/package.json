@@ -21,6 +21,8 @@
     "dart-sass": "^1.25.0",
     "glob": "^7.1.6",
     "html-webpack-plugin": "^4.0.4",
+    "less": "^3.11.1",
+    "less-loader": "^5.0.0",
     "mini-css-extract-plugin": "^0.9.0",
     "postcss-loader": "^3.0.0",
     "sass-loader": "^8.0.2",
@@ -31,5 +33,12 @@
     "webpack-chain": "^6.4.0",
     "webpack-cli": "^3.3.11",
     "webpack-dev-server": "^3.10.3"
-  }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "chrome >= 35",
+    "ie >= 10",
+    "safari >=10"
+  ]
 }

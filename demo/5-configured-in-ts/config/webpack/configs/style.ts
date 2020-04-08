@@ -1,7 +1,14 @@
 import { ConfigTweaker } from '../types';
+import Config from 'webpack-chain';
 
-export const loadStyle: ConfigTweaker = (config) => {
-  const cssRule = config.module.rule('css').test(/\.(sass|scss|less|css)$/);
+const loadStyleAdvanced = (
+  config: Config,
+  name: string,
+  test: RegExp,
+  loader?: string,
+  options: Object = {},
+) => {
+  const cssRule = config.module.rule(name).test(test);
 
   // * ---------------- load style
 
@@ -16,7 +23,7 @@ export const loadStyle: ConfigTweaker = (config) => {
 
   // * ---------------- css
 
-  cssRule.use('css').loader('css-loader').options({ importLoaders: 2 });
+  cssRule.use('css').loader('css-loader');
 
   // * ---------------- postcss
 
@@ -25,11 +32,17 @@ export const loadStyle: ConfigTweaker = (config) => {
     .loader('postcss-loader')
     .options({ ident: 'postcss', plugins: [require('autoprefixer')()] });
 
-  // * ---------------- sass
-  // * would parse scss and less all in one
+  // * ---------------- anvanced processor
 
-  cssRule
-    .use('sass')
-    .loader('sass-loader')
-    .options({ implementation: require('dart-sass') });
+  if (loader) {
+    cssRule.use(loader).loader(loader).options(options);
+  }
+};
+
+export const loadStyle: ConfigTweaker = (config, resolver) => {
+  loadStyleAdvanced(config, 'css', /\.css$/);
+  loadStyleAdvanced(config, 'less', /\.less$/, 'less-loader');
+  loadStyleAdvanced(config, 'sass', /\.(sass|scss)$/, 'sass-loader', {
+    implementation: require('dart-sass'),
+  });
 };
