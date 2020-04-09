@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "start": "webpack-dev-server",
+    "start": "webpack-dev-server --open",
     "build": "webpack",
     "test": "open dist/index.html"
   },

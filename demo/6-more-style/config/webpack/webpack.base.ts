@@ -11,11 +11,9 @@ const config = new Config();
 const cwd = process.cwd();
 const resolver = (p: string) => path.resolve(cwd, p);
 
-// * ---------------- search files
+// * ---------------- load all sub configs
 
 const subConfigs = glob.sync(path.resolve(__dirname, './configs/*.{ts,js}'));
-
-// * ---------------- load all sub configs
 
 subConfigs.forEach((p) => {
   Object.values(require(p)).forEach((val) => {
@@ -24,3 +22,5 @@ subConfigs.forEach((p) => {
 });
 
 export { config };
+
+export default config.toConfig();
