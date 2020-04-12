@@ -2,7 +2,11 @@ import { ConfigTweaker } from '../utils/types';
 import { sourcemap, shouldMinify } from '../utils/env';
 import Config from 'webpack-chain';
 
+// * ================================================================================
+
 const sourcemapOrNot = sourcemap ? { sourceMap: true } : {};
+
+// * ================================================================================
 
 const loadStyleAdvanced = (
   config: Config,
@@ -30,7 +34,10 @@ const loadStyleAdvanced = (
 
   // * ---------------- css
 
-  cssRule.use('css').loader('css-loader').options(sourcemapOrNot);
+  cssRule
+    .use('css')
+    .loader('css-loader')
+    .options({ ...sourcemapOrNot });
 
   // * ---------------- postcss
 
@@ -49,10 +56,7 @@ const loadStyleAdvanced = (
     cssRule
       .use(loader)
       .loader(loader)
-      .options({
-        ...sourcemapOrNot,
-        ...options,
-      });
+      .options({ ...sourcemapOrNot, ...options });
   }
 };
 
