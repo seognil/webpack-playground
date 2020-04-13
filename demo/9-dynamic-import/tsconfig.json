@@ -1,20 +1,11 @@
 {
   "compilerOptions": {
     "target": "ESNext",
-    "module": "CommonJS",
-    "jsx": "preserve",
-    "moduleResolution": "node",
-    // "experimentalDecorators": true,
-    "allowSyntheticDefaultImports": true,
-    "allowJs": true,
-    "checkJs": true,
-    "noEmit": true,
-    "skipLibCheck": true,
-    "isolatedModules": false,
-    "esModuleInterop": true,
-    "strict": true,
-    "declaration": true,
+    "module": "ESNext",
     "sourceMap": true,
+    "strict": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
     "baseUrl": "./",
     "paths": {
       "src": [
