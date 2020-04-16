@@ -11,11 +11,11 @@ const byRuntime = {
     [
       '@babel/preset-env',
       {
-        modules: 'umd',
+        modules: 'cjs',
       },
     ],
   ],
-  exclude: [/node_modules\/(webpack|@babel|core-js)/],
+  exclude: [/node_modules\/(webpack|core-js)/],
 };
 
 module.exports = byRuntime;

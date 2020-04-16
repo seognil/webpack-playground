@@ -70,6 +70,8 @@ sourcemap 的原理这里不表，可以看看 [这篇文章](https://www.ruanyi
 config.devtool('source-map');
 ```
 
+为了处理压缩而进行的一些 `config/` 结构性调整，这里不展开说明。
+
 ## 执行
 
 命令无变化，和之前一样。

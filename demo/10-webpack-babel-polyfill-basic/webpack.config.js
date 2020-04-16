@@ -9,7 +9,7 @@ const webpackConfig = {
     rules: [
       {
         test: /\.(ts|tsx|js|jsx)$/,
-        exclude: [/node_modules\/(webpack|@babel|core-js)/],
+        exclude: [/node_modules\/(webpack|core-js)/],
         use: [
           {
             loader: 'babel-loader',

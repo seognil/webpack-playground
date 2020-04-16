@@ -27,7 +27,7 @@ TypeScript 在第 5 节重构 config 的时候就已经装好了
 
 - Babel
   - `@babel/core`：Babel 编译器核心
-  - `@babel/preset-env`：一组方便的预设，内置一堆设定，能满足大部分需求。详情请看 [文档](https://babeljs.io/docs/en/babel-preset-env)
+  - `@babel/preset-env`：一组方便的预设，内置一堆设定，能满足大部分需求。详情请看 [文档](https://babeljs.io/docs/en/babel-preset-env)，以及这个 [更新说明](https://babeljs.io/blog/2020/01/11/7.8.0#ecmascript-2020-default-support-10811-https-githubcom-babel-babel-pull-10811-10817-https-githubcom-babel-babel-pull-10817-10819-https-githubcom-babel-babel-pull-10819-10843-https-githubcom-babel-babel-pull-10843)。
   - `@babel/preset-typescript`：顾名思义，编译 TS 到 JS 的（通常目标是 ESNext，还不是 ES5 的，这样改动比较小，剩下的事交给另外的工具处理，这里也就是交给 `preset-env`）
 - `babel-loader`：我想你能猜到~
 

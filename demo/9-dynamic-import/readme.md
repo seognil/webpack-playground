@@ -32,7 +32,7 @@ const { initLib } = await import('./lib');
 initLib();
 ```
 
-不过 await 需要额外处理，我们在后续章节中再来回顾，这里先使用普通的 Promise 形式。
+不过 await 需要额外处理，我们在后续的小节中再来回顾，这里先使用普通的 Promise 形式。
 
 ## 配置
 
@@ -53,15 +53,13 @@ initLib();
 `"amd" | "umd" | "systemjs" | "commonjs" | "cjs" | "auto" | false`  
 默认值 `"auto"`
 
+`false` 也就是指 ESM
+
 详情查看 [文档](https://babeljs.io/docs/en/babel-preset-env#modules)
 
-在实践中，发现 `cjs` 无法成功实施动态加载，  
-但 `false`（也就是 `esm`）和 `"amd"` 是可以的（其他略）。
+其中
 
-（没找到原理是什么，以及哪里有文档……推测应该是 Webpack 的处理代码不支持（毕竟代码也都是人写的））
-
-所以我们可以设定为 `false` 或 `"amd"`，  
-反正 Babel 只是打包过程的一部分，后续 Webpack 还是要进行模块化封装处理的。
+> Dynamic import can only be supported when transforming ES modules to AMD, CommonJS or SystemJS.
 
 ## 执行
 
