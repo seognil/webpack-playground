@@ -23,9 +23,12 @@ const commands = Object.entries({
   7: [`yarn build; yarn test`, `yarn build:dev; yarn test`],
   8: [`yarn build; yarn test`, `yarn build:dev; yarn test`],
   9: [`yarn build; yarn test`, `yarn build:dev; yarn test`],
+  //
   10: [`yarn build; yarn test`, `yarn build:dev; yarn test`, `yarn build:babel; yarn test:babel`],
   11: [`yarn build; yarn test`, `yarn build:dev; yarn test`, `yarn build:babel; yarn test:babel`],
   12: [`yarn build; yarn test`, `yarn build:dev; yarn test`],
+  //
+  13: [`yarn build; yarn test`, `yarn build:dev; yarn test`],
 }).map(([i, cmds]) => cmds.map((e) => e.replace(/^/, `cd ${projs[Number(i)]}; yarn; `)));
 
 jest.retryTimes(0);

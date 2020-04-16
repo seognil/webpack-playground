@@ -19,10 +19,9 @@
 - [10 Let's: Polyfill](demo/10-webpack-babel-polyfill-basic)
 - [11 Let's: Polyfill + async](demo/11-polyfill-and-async)
 - [12 Let's: Tree Shaking](demo/12-tree-shaking)
+- [13 目前为止的功能（一）](demo/13-milestone-with-polyfill)
 
 <!-- demo end -->
-
-- ~~13 整合目前为止的所有配置~~
 
 - TODO
   - Webpack
