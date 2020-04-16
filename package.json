@@ -1,7 +1,8 @@
 {
   "scripts": {
     "format": "prettier --write 'demo/**/*'",
-    "test": "jest"
+    "test": "jest",
+    "readme": "ts-node build/build-readme.ts"
   },
   "devDependencies": {
     "@types/glob": "^7.1.1",
