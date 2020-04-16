@@ -17,7 +17,7 @@ const projs = glob
 
 const readmeAbsPaths = projs.map((p) => path.resolve(p, 'readme.md'));
 
-const readmeRelPaths = readmeAbsPaths.map((p) => path.relative(rootDir, p));
+const readmeRelPaths = projs.map((p) => path.relative(rootDir, p));
 
 const titles = readmeAbsPaths.map(
   (p) => fs.readFileSync(p, 'utf8').match(/(?<=(^#\s)).*(?=\n)/)![0],
