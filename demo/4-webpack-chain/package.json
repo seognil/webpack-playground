@@ -1,7 +1,8 @@
 {
   "scripts": {
     "start": "webpack-dev-server --open --config=config/webpack/webpack.dev.js",
-    "build": "webpack --config=config/webpack/webpack.prod.js",
+    "build": "webpack --config=config/webpack/webpack.prod.js --mode=production",
+    "build:dev": "webpack --config=config/webpack/webpack.dev.js --mode=development",
     "test": "open dist/index.html"
   },
   "devDependencies": {

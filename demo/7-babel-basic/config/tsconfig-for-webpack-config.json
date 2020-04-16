@@ -4,8 +4,7 @@
     "module": "CommonJS",
     "esModuleInterop": true,
     "moduleResolution": "node",
-    "allowSyntheticDefaultImports": true,
     "strict": true,
     "allowJs": true
-  },
+  }
 }

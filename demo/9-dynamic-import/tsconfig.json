@@ -5,15 +5,10 @@
     "sourceMap": true,
     "strict": true,
     "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
     "baseUrl": "./",
     "paths": {
-      "src": [
-        "src"
-      ]
+      "src": ["src"]
     }
   },
-  "include": [
-    "src"
-  ]
+  "include": ["src"]
 }
