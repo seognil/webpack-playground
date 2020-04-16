@@ -1,4 +1,4 @@
-# 7 Babel 基本
+# 7 Babel 基本, 用 TypeScript 写业务代码
 
 ## 目标
 
