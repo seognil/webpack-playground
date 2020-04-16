@@ -33,7 +33,9 @@ const readme = fs.readFileSync(readmePath, 'utf8');
 const result = readme.replace(
   /<!-- demo start -->(.|\n)*<!-- demo end -->/,
   `<!-- demo start -->
+
 ${makeMarkdown.join('\n')}
+
 <!-- demo end -->`,
 );
 
