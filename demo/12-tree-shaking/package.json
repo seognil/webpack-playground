@@ -11,11 +11,10 @@
     "@babel/core": "^7.9.0",
     "@babel/plugin-transform-runtime": "^7.9.0",
     "@babel/preset-env": "^7.9.5",
+    "@babel/runtime-corejs3": "^7.9.2",
     "babel-loader": "^8.1.0",
     "webpack": "^4.42.1",
     "webpack-cli": "^3.3.11"
   },
-  "dependencies": {
-    "@babel/runtime-corejs3": "^7.9.2"
-  }
+  "dependencies": {}
 }

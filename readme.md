@@ -21,6 +21,12 @@
 - [12 Let's: Tree Shaking](demo/12-tree-shaking)
 - [13 目前为止的功能（一）](demo/13-milestone-with-polyfill)
 
+_还没写文档的_
+
+- [14-pack-image](demo/14-pack-image)
+- [15-react](demo/15-react)
+- [16-vue](demo/16-vue)
+
 <!-- demo end -->
 
 - TODO
@@ -30,9 +36,6 @@
     - 提高编译速度
     - chunkname
     - hash
-  - 框架
-    - React
-    - Vue
 
 * TODO
   - alias
