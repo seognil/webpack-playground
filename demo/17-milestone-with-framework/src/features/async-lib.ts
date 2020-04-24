@@ -1,7 +1,7 @@
 const render = (text: string) => {
   const div = document.createElement('div');
   div.textContent = text;
-  document.querySelector('#app-vanilla')!.appendChild(div);
+  document.body.appendChild(div);
 };
 
 export const initLib = () => {

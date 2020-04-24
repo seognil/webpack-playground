@@ -22,7 +22,7 @@ const echo = (str: string) => {
   echoRaw(`'\\n'`);
 };
 
-const clearFolder = (p: string) => {
+const cleanFolder = (p: string) => {
   const distPath = path.resolve(p, 'dist');
   fs.existsSync(distPath) && execSync(`trash ${distPath}`);
   // const npmPath = path.resolve(p, 'node_modules');
@@ -45,11 +45,11 @@ const shouldTest: Ranger = (() => {
 
   let c = argv.cases as string | undefined;
 
-  c = c ? c.replace(/\s/g, '') : c;
+  c = c ? String(c).replace(/\s/g, '') : c;
 
   const range = (c && /^\d+[-~]\d+$/.test(c) && c.split(/[-~]/).map(Number)) || testRange;
 
-  const cases = c && /^(\d+,)\d+$/.test(c) && c.replace(/\s/g, '').split(',').map(Number);
+  const cases = c && /^(\d+,)?\d+$/.test(c) && c.replace(/\s/g, '').split(',').map(Number);
 
   return cases ? (i: number) => cases.includes(i) : (i: number) => range[0] <= i && i <= range[1];
 })();
@@ -72,7 +72,7 @@ const testCmd = {
 const dynamicList = [9, 13, 17];
 const polyfillList = [10, 11, 14, 15, 16, 17];
 const babelTest = [10, 11];
-const shakeTest = [12, 13];
+const shakeTest = [12, 13, 17];
 
 const findDistJs = (projPath: string) => glob.sync(path.resolve(projPath, 'dist/*.js'));
 
@@ -93,8 +93,8 @@ projPathList.forEach((p, i) => {
   };
 
   describe(`proj: ${projName}`, () => {
-    // * clear dist and npm
-    clearFolder(p);
+    // * clear dist w/o npm
+    cleanFolder(p);
 
     const cmds = i <= 3 ? testCmd.basic : testCmd.prod;
     cmds.forEach((c) =>
@@ -104,7 +104,7 @@ projPathList.forEach((p, i) => {
     );
 
     if (shakeTest.includes(i)) {
-      myTest(`polyfill check`, () => {
+      myTest(`tree shaking check`, () => {
         findDistJs(p).forEach((e) => {
           const output = fs.readFileSync(e, 'utf8');
           expect(/\bDEADBEAF\b/.test(output)).toBe(false);

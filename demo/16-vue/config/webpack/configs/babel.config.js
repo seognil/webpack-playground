@@ -1,4 +1,5 @@
 module.exports = {
+  sourceType: 'unambiguous',
   plugins: [
     [
       '@babel/plugin-transform-runtime',
@@ -11,7 +12,7 @@ module.exports = {
     [
       '@babel/preset-env',
       {
-        modules: 'amd',
+        modules: false,
       },
     ],
     '@babel/preset-typescript',
