@@ -27,16 +27,13 @@ _还没写文档的_
 - [15-react](demo/15-react)
 - [16-vue](demo/16-vue)
 - [17-milestone-with-framework](demo/17-milestone-with-framework)
+- [18-webpack-output-filename](demo/18-webpack-output-filename)
 
 <!-- demo end -->
 
 - TODO
   - Webpack
-    - url-loader（资源加载）
-    - text-loader json-loader
     - 提高编译速度
-    - chunkname
-    - hash
 
 * TODO
   - alias
