@@ -70,9 +70,9 @@ const testCmd = {
 };
 
 const dynamicList = [9, 13, 17];
-const polyfillList = [10, 11, 14, 15, 16, 17];
+const polyfillList = [10, 11, 14, 15, 16, 17, 18];
 const babelTest = [10, 11];
-const shakeTest = [12, 13, 17];
+const shakeTest = [12, 13, 17, 18];
 
 const findDistJs = (projPath: string) => glob.sync(path.resolve(projPath, 'dist/*.js'));
 
