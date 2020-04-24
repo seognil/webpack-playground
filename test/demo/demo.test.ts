@@ -1,11 +1,35 @@
+// * yarn jest --cases='11-13'
+// * yarn jest --cases='11, 13'
+
+import { argv } from 'yargs';
 import path from 'path';
 import fs from 'fs';
 import { execSync } from 'child_process';
 import glob from 'glob';
 
+// * ================================================================================
+
 const numMatch = (p: string) => p.match(/(?<=demo\/)\d+(?=[-])/);
 
 const numOf = (p: string) => Number(numMatch(p)![0]);
+
+const echoRaw = (str: string) => {
+  execSync(`echo ${str}`, { stdio: 'inherit' });
+};
+const echo = (str: string) => {
+  echoRaw(`'\\n'`);
+  echoRaw(str);
+  echoRaw(`'\\n'`);
+};
+
+const clearFolder = (p: string) => {
+  const distPath = path.resolve(p, 'dist');
+  fs.existsSync(distPath) && execSync(`trash ${distPath}`);
+  // const npmPath = path.resolve(p, 'node_modules');
+  // fs.existsSync(npmPath) && execSync(`trash ${npmPath}`);
+};
+
+// * ================================================================================
 
 const projPathList = glob
   .sync(path.resolve(__dirname, '../../demo/*'))
@@ -13,6 +37,31 @@ const projPathList = glob
   .sort((a, b) => numOf(a) - numOf(b));
 
 // * ---------------------------------------------------------------- range
+
+type Ranger = (i: number) => boolean;
+
+const shouldTest: Ranger = (() => {
+  const testRange = [-Infinity, Infinity];
+
+  let c = argv.cases as string | undefined;
+
+  c = c ? c.replace(/\s/g, '') : c;
+
+  const range = (c && /^\d+[-~]\d+$/.test(c) && c.split(/[-~]/).map(Number)) || testRange;
+
+  const cases = c && /^(\d+,)\d+$/.test(c) && c.replace(/\s/g, '').split(',').map(Number);
+
+  return cases ? (i: number) => cases.includes(i) : (i: number) => range[0] <= i && i <= range[1];
+})();
+
+echo(
+  `should test: ${projPathList
+    .map((e, i) => i)
+    .filter((e) => shouldTest(e))
+    .join(', ')}`,
+);
+
+// * ---------------------------------------------------------------- test every proj
 
 const testCmd = {
   basic: [`yarn build; yarn test`],
@@ -23,21 +72,14 @@ const testCmd = {
 const dynamicList = [9, 13, 17];
 const polyfillList = [10, 11, 14, 15, 16, 17];
 const babelTest = [10, 11];
-
-let testRange = [-Infinity, Infinity];
-
-// testRange = [11, 11];
-
-const outOfRange = (i: number) => i < testRange[0] || testRange[1] < i;
-
-// * ---------------------------------------------------------------- test build
+const shakeTest = [12, 13];
 
 const findDistJs = (projPath: string) => glob.sync(path.resolve(projPath, 'dist/*.js'));
 
 jest.retryTimes(1);
 
 projPathList.forEach((p, i) => {
-  if (outOfRange(i)) return;
+  if (!shouldTest(i)) return;
 
   const projName = path.basename(p);
 
@@ -45,18 +87,14 @@ projPathList.forEach((p, i) => {
     const fullTitle = `${title}: ${projName}`;
 
     test(fullTitle, () => {
-      execSync(`echo '\\n'`, { stdio: 'inherit' });
-      execSync(`echo '\\033[0;34m---- ${fullTitle}\\033[0m'`, { stdio: 'inherit' });
-      execSync(`echo '\\n'`, { stdio: 'inherit' });
-
+      echo(`'\\033[0;34m---- ${fullTitle}\\033[0m'`);
       fn();
     });
   };
 
   describe(`proj: ${projName}`, () => {
-    // * clear dist
-    const distPath = path.resolve(p, 'dist');
-    fs.existsSync(distPath) && execSync(`trash ${distPath}`);
+    // * clear dist and npm
+    clearFolder(p);
 
     const cmds = i <= 3 ? testCmd.basic : testCmd.prod;
     cmds.forEach((c) =>
@@ -64,6 +102,15 @@ projPathList.forEach((p, i) => {
         execSync(`cd ${p}; yarn; ${c}`, { stdio: 'inherit' });
       }),
     );
+
+    if (shakeTest.includes(i)) {
+      myTest(`polyfill check`, () => {
+        findDistJs(p).forEach((e) => {
+          const output = fs.readFileSync(e, 'utf8');
+          expect(/\bDEADBEAF\b/.test(output)).toBe(false);
+        });
+      });
+    }
 
     if (dynamicList.includes(i)) {
       myTest(`dynamic import check`, () => {
