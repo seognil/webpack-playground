@@ -12,3 +12,5 @@ export const isBuilding = dev || prod;
 export const shouldMinify = prod;
 
 export const sourcemap = argv.devtool !== undefined ? argv.devtool : isDevMode;
+
+export const isWatch = argv.watch !== undefined;

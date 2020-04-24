@@ -26,6 +26,7 @@ _还没写文档的_
 - [14-pack-image](demo/14-pack-image)
 - [15-react](demo/15-react)
 - [16-vue](demo/16-vue)
+- [17-milestone-with-framework](demo/17-milestone-with-framework)
 
 <!-- demo end -->
 
