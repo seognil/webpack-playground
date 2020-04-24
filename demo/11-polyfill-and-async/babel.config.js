@@ -1,4 +1,5 @@
 const byRuntime = {
+  sourceType: 'unambiguous',
   plugins: [
     [
       '@babel/plugin-transform-runtime',

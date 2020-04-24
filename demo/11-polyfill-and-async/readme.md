@@ -38,6 +38,7 @@ console.log(queryString);
 
 ```js
 const byRuntime = {
+  sourceType: 'unambiguous',
   plugins: [
     [
       '@babel/plugin-transform-runtime',
@@ -50,7 +51,7 @@ const byRuntime = {
     [
       '@babel/preset-env',
       {
-        modules: 'cjs',
+        modules: false,
       },
     ],
   ],
@@ -81,11 +82,19 @@ await new Promise();
 _regenerator["default"].wrap(function _callee$(_context) {...})
 ```
 
-解决方法是，将 `modules` 设定为除了 `false` 和 `'auto'` 的值，比如 `'cjs'`。
+~~解决方法是，将 `modules` 设定为除了 `false` 和 `'auto'` 的值，比如 `'cjs'`。~~
 
-这是很难直接在众多文档中直接找到的问题，  
-在以后的实践中，我们可能还会碰到类似这样的玄学问题。  
-（~~这也是为什么 Webpack 这么难用~~）
+解决方法的是，在 babel 中加一行配置：
+
+```js
+sourceType: 'unambiguous',
+```
+
+[文档在这里](https://babeljs.io/docs/en/options#sourcetype)，总之解决了模块化的处理问题。
+
+这个问题**很难直接在众多文档中找到**的解决方案和原因，  
+在以后的实践中，我们可能还会碰到类似这样的迷之问题。  
+（~~这也是为什么 Webpack 这么难配~~）
 
 ## 执行
 

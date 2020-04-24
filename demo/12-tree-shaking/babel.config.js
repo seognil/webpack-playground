@@ -1,4 +1,5 @@
 const byRuntime = {
+  sourceType: 'unambiguous',
   plugins: [
     [
       '@babel/plugin-transform-runtime',
@@ -15,7 +16,7 @@ const byRuntime = {
       },
     ],
   ],
-  exclude: [/node_modules\/(webpack|@babel|core-js)/],
+  exclude: [/node_modules\/(webpack|core-js)/],
 };
 
 module.exports = byRuntime;
