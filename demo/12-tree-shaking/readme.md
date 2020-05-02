@@ -1,4 +1,4 @@
-# 12 Let's: Tree Shaking
+# 12 [Let's]: Tree Shaking
 
 ## 目标
 

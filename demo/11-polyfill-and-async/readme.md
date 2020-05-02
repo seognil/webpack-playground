@@ -1,4 +1,4 @@
-# 11 Let's: Polyfill + async
+# 11 [Let's]: Polyfill + async
 
 基于上一小节的代码
 
