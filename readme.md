@@ -16,17 +16,17 @@
 - [7 Babel 基本, 用 TypeScript 写业务代码](demo/7-babel-basic)
 - [8 代码压缩配置](demo/8-minify-and-restructure-configs)
 - [9 Dynamic Import](demo/9-dynamic-import)
-- [10 Let's: Polyfill](demo/10-webpack-babel-polyfill-basic)
-- [11 Let's: Polyfill + async](demo/11-polyfill-and-async)
-- [12 Let's: Tree Shaking](demo/12-tree-shaking)
-- [13 目前为止的功能（一）](demo/13-milestone-with-polyfill)
+- [10 [Let's]: Polyfill](demo/10-webpack-babel-polyfill-basic)
+- [11 [Let's]: Polyfill + async](demo/11-polyfill-and-async)
+- [12 [Let's]: Tree Shaking](demo/12-tree-shaking)
+- [13 目前为止的功能\*（一）](demo/13-milestone-with-polyfill)
+- [14 打包静态资源（如图片字体）](demo/14-pack-image)
+- [15 React](demo/15-react)
+- [16 Vue](demo/16-vue)
+- [17 目前为止的功能\*（二）](demo/17-milestone-with-framework)
 
 _还没写文档的_
 
-- [14-pack-image](demo/14-pack-image)
-- [15-react](demo/15-react)
-- [16-vue](demo/16-vue)
-- [17-milestone-with-framework](demo/17-milestone-with-framework)
 - [18-webpack-output-filename](demo/18-webpack-output-filename)
 
 <!-- demo end -->
