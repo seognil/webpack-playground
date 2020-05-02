@@ -29,7 +29,7 @@
 - [Babel 学习系列 4-polyfill 和 runtime 差别(必看)](https://zhuanlan.zhihu.com/p/58624930)
 - [babel-polyfill VS babel-runtime VS babel-preset-env](https://juejin.im/post/5aefe0a6f265da0b9e64fa54)
 
-而关于目标环境的设定，我们在第 7 节高级 CSS 中，已经设定了 [browserslist](https://github.com/browserslist/browserslist)，这里 Babel 也可以直接读取使用。
+而关于目标环境的设定，我们在第 6 节高级 CSS 中，已经设定了 [browserslist](https://github.com/browserslist/browserslist)，这里 Babel 也可以直接读取使用。
 
 ## 配置
 

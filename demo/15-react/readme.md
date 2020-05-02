@@ -33,7 +33,7 @@
 ```
 
 在 `src/react/` 中，我直接借用了 `create-react-app --typescript` 生成的项目初始文件。
-并在 `scr/index.ts`、我们的入口文件中 `import './react';`。这里不多展开。
+并在我们的入口文件 `scr/index.ts` 中 `import './react';`。这里不多展开。
 
 其实要支持 React 很简单，只需要给 Babel 搭载 `@babel/preset-react` 这个预设即可。
 
