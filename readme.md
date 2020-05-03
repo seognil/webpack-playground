@@ -24,10 +24,7 @@
 - [15 React](demo/15-react)
 - [16 Vue](demo/16-vue)
 - [17 目前为止的功能\*（二）](demo/17-milestone-with-framework)
-
-_还没写文档的_
-
-- [18-webpack-output-filename](demo/18-webpack-output-filename)
+- [18 输出文件名、Vendor](demo/18-webpack-output-filename)
 
 <!-- demo end -->
 

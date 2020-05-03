@@ -40,7 +40,10 @@ const noReadmeList: string[] = demos
     return `- [${folder}](${relPath})`;
   });
 
-const mdList = [...readmeList, '\n_还没写文档的_\n', ...noReadmeList].join('\n');
+const mdList = (noReadmeList.length
+  ? [...readmeList, '\n_还没写文档的_\n', ...noReadmeList]
+  : [...readmeList]
+).join('\n');
 
 // * ================================================================================
 
