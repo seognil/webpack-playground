@@ -1,3 +1,7 @@
+# **Deprecated**，别学了，直接用 [vite](https://cn.vitejs.dev/)
+
+---
+
 # Webpack 从零开始
 
 Webpack 对于现代前端开发来说是一个必不可少的工具。无论你是主动配置，还是被动地通过 CLI 调用。如果你想使用 ES6、TypeScript、JSX 等新技术，你的项目中总是会有它。
